@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Gerenciamento de Alunos</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Gerenciamento de Alunos</h1>
+
+        <!-- Formulário para adicionar/editar alunos -->
+         <form id="alunoForm">
+            <input type="hidden" id="alunoId">
+            <input type="text" id="nome" placeholder="Nome" required>
+            <input type="text" id="curso" placeholder="Curso" required>
+            <button type="submit">Salvar</button>
+         </form>
+    
+
+        <!-- Lista de alunos -->
+        <h2>Lista de Alunos</h2>
+        <ul id="alunosList"></ul>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
