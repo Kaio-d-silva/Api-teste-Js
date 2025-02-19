@@ -1,6 +1,7 @@
 import './App.css';
 import { Fragment, useState } from 'react';
 import { fetchAlunos, createAluno, updateAluno, deleteAluno } from './service/http'
+import ListaAlunos from './components/lista-alunos';
 
 function App() {
 
@@ -13,13 +14,18 @@ function App() {
     setAlunos(alunos);
   }
   async function createAlunoAPI(aluno) {
+    if(aluno.id !== undefined && aluno.id !==''){
+      await updateAluno(aluno)
+    }
+    aluno.id = alunos.length + 1;
     await createAluno(aluno);
     setAluno({ id: '', nome: '', curso: '' });
     loadAlunos();
   }
   async function updateAlunoAPI(aluno) {
-    await updateAluno(aluno);
-    setAluno({ id: '', nome: '', curso: '' });
+    // await updateAluno(aluno);
+    // setAluno({ id: '', nome: '', curso: '' });
+    setAluno(aluno);
     loadAlunos();
   }
   async function deleteAlunoAPI(id) {
@@ -46,15 +52,7 @@ function App() {
             <button type='submit'>Salvar</button>
         </form>
         <h2>Lista de Alunos</h2>
-        <ul id="alunosList">
-          { (alunos.map(aluno => {
-            return <li key={aluno.id}>
-              {aluno.nome} - {aluno.curso}
-              <button onClick={() => updateAlunoAPI(aluno)}>Editar</button>
-              <button onClick={() => deleteAlunoAPI(aluno.id)}>Deletar</button>
-            </li>
-          }))}
-        </ul>
+        <ListaAlunos alunos={alunos} updateAlunoAPI={updateAlunoAPI} deleteAlunoAPI={deleteAlunoAPI} />
       </div>
     </Fragment>
   );
