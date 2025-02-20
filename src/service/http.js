@@ -1,10 +1,10 @@
 export  const fetchAlunos = async () => {
-    const response = await fetch('http://localhost:9000/alunos');
+    const response = await fetch('http://localhost:3000/alunos');
     return await response.json();
 };
 
 export  const createAluno = async (aluno) => {
-    await fetch('http://localhost:9000/alunos', {
+    await fetch('http://localhost:3000/alunos', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -15,7 +15,7 @@ export  const createAluno = async (aluno) => {
 };
 
 export  const updateAluno = async (aluno) => {
-    await fetch(`http://localhost:9000/alunos/${aluno.id}`, {
+    await fetch(`http://localhost:3000/alunos/${aluno.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
@@ -26,7 +26,7 @@ export  const updateAluno = async (aluno) => {
 };
 
 export  const deleteAluno = async (id) => {
-    await fetch(`http://localhost:9000/alunos/${id}`, {
+    await fetch(`http://localhost:3000/alunos/${id}`, {
         method: 'DELETE'
     });
     fetchAlunos();
